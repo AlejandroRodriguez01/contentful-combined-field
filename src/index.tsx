@@ -147,6 +147,8 @@ export const CombinedField = ({ sdk }: CombinedFieldProps) => {
         }
 
         newParts.push(raw);
+      } else if (part === 'id') {
+        newParts.push(sdk.entry.id);
       } else if (part === 'locale') {
         newParts.push(locale);
       } else if (part.startsWith('date:')) {
