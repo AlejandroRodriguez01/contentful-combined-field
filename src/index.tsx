@@ -44,7 +44,6 @@ export const CombinedField = ({ sdk }: CombinedFieldProps) => {
       const fieldName = fieldParts.length === 1 ? field : fieldParts[0];
       if (Object.prototype.hasOwnProperty.call(sdk.entry.fields, fieldName)) {
         const locales = sdk.entry.fields[fieldName].locales;
-
         locales.forEach((locale: string) => {
           sdk.entry.fields[fieldName].onValueChanged(locale, () => {
             if (debounceInterval) {
@@ -147,8 +146,8 @@ export const CombinedField = ({ sdk }: CombinedFieldProps) => {
         }
 
         newParts.push(raw);
-      } else if (part === 'id') {
-        newParts.push(sdk.entry.id);
+      } else if (part === 'entry_id') {
+        newParts.push(sdk.entry.getSys().id);
       } else if (part === 'locale') {
         newParts.push(locale);
       } else if (part.startsWith('date:')) {
